@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: com.vishnu.myfioriapp
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        ignoreCertError: true
+        target:
+          url: https://10.25.154.52:44300/
+          client: "300"
+        app:
+          name: ZTESTFIORITOOL
+          description: ztestfioritool
+          package: $tmp
+          transport: SV4K900379
